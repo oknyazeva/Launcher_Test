@@ -24,7 +24,7 @@ def find_version ():
 
 
 def mac_command_download():
-    full_command_download = Mods.env.command_download + " " + Mods.env.download_folder + " " + Mods.env.tools_Stable_list[4] + " " + Mods.env.branch_info_list[0] + " > log.txt"
+    full_command_download = Mods.env.command_download + " " + Mods.env.download_folder + " " + Mods.env.tools_Stable_list[5] + " " + Mods.env.branch_info_list[0] + " > log.txt"
     print ("Downloading Started. Command: ", full_command_download)
     subprocess.call(full_command_download, shell=True)
 
@@ -32,7 +32,8 @@ def mac_command_install():
     subprocess.call(Mods.env.command_install, shell=True)
 
 def win_cmd_download():
-    subprocess.call(Mods.env.cmd_download, shell=True)
+    full_command_download = Mods.env.cmd_download + " " + Mods.env.download_folder + " " + Mods.env.tools_Stable_list[4] + " " + Mods.env.branch_info_list[0] + " > log.txt"
+    subprocess.call(full_command_download, shell=True)
 
 def win_cmd_install():
     subprocess.call(Mods.env.cmd_install, shell=True)
@@ -41,6 +42,7 @@ if os.path.exists(os.path.expanduser('~/Library/')):
     mac_command_install()
     mac_command_download()
 else:
+    win_cmd_install()
     win_cmd_download()
 
 if os.path.exists(Mods.env.launcher_preferenses_mac):
